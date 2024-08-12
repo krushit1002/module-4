@@ -1,0 +1,1678 @@
+MODULE: 4
+OOPS Concept
+Topics Covered
+Basic Concepts of OOP
+1. WAP to print “Hello World” using C++
+
+#include <iostream>
+int main() 
+{
+    std::cout << "Hello World!";
+    return 0;
+}
+
+2. What is OOP? List OOP concepts
+
+Object-oriented programming – As the name suggests uses objects in programming. Object-oriented programming aims to implement
+real-world entities like inheritance, hiding, polymorphism, etc. in programming. The main aim of OOP is to bind together the
+data and the functions that operate on them so that no other part of the code can access this data except that function.
+
+There are some basic concepts that act as the building blocks of OOPs i.e.
+
+Class
+Objects
+Encapsulation
+Abstraction
+Polymorphism
+Inheritance
+Dynamic Binding
+Message Passing
+
+3. What is the difference between OOP and POP?
+
+OOPs(object-oriented programming languages)
+it mainly focuses on creating objects to represent real-world entities.
+It includes the concept of encapsulation, inheritance, and polymorphism
+it supports code reusability modularity and flexibility.
+It is used for larger, more complex projects with a lot of data to manage
+Language includes  Java, Python, C++, etc.
+
+POP(procedural programming language )
+It mainly focuses on creating a series of procedures or functions to perform tasks
+It does not include the concept of encapsulation, inheritance, and polymorphism
+It Emphasizes simplicity, clarity, and speed
+It is used for smaller, simpler projects with fewer data management requirements
+Language includes   C, Pascal, and Fortran
+
+Topics Covered
+Basic Concepts of OOP
+1. WAP to create simple calculator using class
+
+// C++ program to implement 
+// the above approach
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+// Class calculator 
+class Calculator
+{
+float a, b;
+public:
+
+	// Function to take input
+	// from user
+	void result() 
+	{
+		cout << "Enter First Number: "; 
+		cin >> a;
+		cout << "Enter Second Number: "; 
+		cin >> b;
+	}
+
+	// Function to add two numbers
+	float add() 
+	{
+		return a + b;
+	}
+
+	// Function to subtract two numbers
+	float sub() 
+	{
+		return a - b;
+	}
+
+	// Function to multiply two numbers
+	float mul() 
+	{
+		return a * b;
+	}
+
+	// Function to divide two numbers
+	float div() 
+	{
+		if (b == 0) 
+		{
+			cout << "Division By Zero" << 
+					endl;
+			return INFINITY;
+		}
+		else
+		{
+			return a / b;
+		}
+	}
+};
+
+// Driver code
+int main() 
+{
+	int ch;
+	Calculator c; 
+	cout << "Enter 1 to Add 2 Numbers" << 
+			"\nEnter 2 to Subtract 2 Numbers" << 
+			"\nEnter 3 to Multiply 2 Numbers" << 
+			"\nEnter 4 to Divide 2 Numbers" << 
+			"\nEnter 0 To Exit";
+		
+	do
+	{
+		cout << "\nEnter Choice: ";
+		cin >> ch;
+		switch (ch)
+		{
+		case 1:
+			
+			// result function invoked
+			c.result();	 
+			
+			// add function to calculate sum
+			cout << "Result: " << 
+					c.add() << endl; 
+			break;
+		case 2:
+			
+			// sub function to calculate 
+			// difference
+			c.result();
+			cout << "Result: " << 
+					c.sub() << endl; 
+			break;
+		case 3:
+			c.result();
+			
+			// mul function to calculate product
+			cout << "Result: " << 
+					c.mul() << endl; 
+			break;
+		case 4:
+			c.result();
+			
+			// div function to calculate division
+			cout << "Result: " << 
+					c.div() << endl; 
+			break;
+		}
+		
+	} while (ch >= 1 && ch <= 4);
+	
+	return 0;
+}
+
+2. Define a class to represent a bank account. Include the following members:
+
+#include<iostream>
+#include<stdio.h>
+#include<string.h>
+
+using namespace std;
+
+class bank
+{
+int acno;
+        char nm[100], acctype[100];
+        float bal;  
+   public:
+        bank(int acc_no, char *name, char *acc_type, float balance)  //Parameterized Constructor
+        {
+                acno=acc_no;
+                strcpy(nm, name);
+                strcpy(acctype, acc_type);
+                bal=balance;
+        }
+void deposit();
+        void withdraw();
+        void display();
+};
+void bank::deposit()   //depositing an amount
+{
+        int damt1;
+        cout<<"\n Enter Deposit Amount = ";
+        cin>>damt1;
+        bal+=damt1;
+}
+void bank::withdraw()  //withdrawing an amount
+{
+        int wamt1;
+        cout<<"\n Enter Withdraw Amount = ";
+        cin>>wamt1;
+        if(wamt1>bal)
+                cout<<"\n Cannot Withdraw Amount";
+        bal-=wamt1;
+}
+void bank::display()  //displaying the details
+{
+        cout<<"\n ----------------------";
+        cout<<"\n Accout No. : "<<acno;
+        cout<<"\n Name : "<<nm;
+        cout<<"\n Account Type : "<<acctype;
+        cout<<"\n Balance : "<<bal;  
+}
+int main()
+{
+        int acc_no;
+        char name[100], acc_type[100];
+        float balance;
+        cout<<"\n Enter Details: \n";
+        cout<<"-----------------------";
+        cout<<"\n Accout No. ";
+        cin>>acc_no;
+        cout<<"\n Name : ";
+        cin>>name;
+        cout<<"\n Account Type : ";
+        cin>>acc_type;
+        cout<<"\n Balance : ";
+        cin>>balance;
+  
+        bank b1(acc_no, name, acc_type, balance);  //object is created
+        b1.deposit(); //
+        b1.withdraw(); // calling member functions
+        b1.display(); //
+        return 0;
+}
+
+3. Data Member:
+-Name of the depositor
+-Account Number
+-Type of Account
+-Balance amount in the account
+Member Functions
+-To assign values
+-To deposited an amount
+-To withdraw an amount after checking balance
+-To display name and balance
+
+4. Write a C++ program to implement a class called Circle that has private
+member variables for radius. Include member functions to calculate the
+circle's area and circumference.
+
+#include <iostream> // Include necessary header for input/output stream
+
+#include <cmath> // Include necessary header for mathematical functions
+
+const double PI = 3.14159; // Define the value of PI as a constant
+
+class Circle { // Define a class named Circle
+  private: 
+    double radius; // Private member to store the radius
+
+  public:
+    // Constructor to initialize the Circle object with a radius
+    Circle(double rad): radius(rad) {}
+
+    // Member function to calculate the area of the circle
+    double calculateArea() {
+      return PI * pow(radius, 2); // Formula to calculate the area of a circle
+    }
+
+    // Member function to calculate the circumference of the circle
+    double calculateCircumference() {
+      return 2 * PI * radius; // Formula to calculate the circumference of a circle
+    }
+};
+
+int main() {
+  // Create a circle object
+  double radius;
+  std::cout << "Input the radius of the circle: ";
+  std::cin >> radius; // Input the radius from the user
+  Circle circle(radius); // Create a Circle object with the given radius
+
+  // Calculate and display the area of the circle
+  double area = circle.calculateArea(); // Calculate the area using the Circle object
+  std::cout << "Area: " << area << std::endl; // Output the calculated area
+
+  // Calculate and display the circumference of the circle
+  double circumference = circle.calculateCircumference(); // Calculate the circumference using the Circle object
+  std::cout << "Circumference: " << circumference << std::endl; // Output the calculated circumference
+
+  return 0; // Return 0 to indicate successful completion
+}
+
+5. Write a C++ program to create a class called Rectangle that has private
+member variables for length and width. Implement member functions to
+calculate the rectangle's area and perimeter.
+
+#include <iostream> // Include necessary header for input/output stream
+
+class Rectangle { // Define a class named Rectangle
+  private: 
+    double length; // Private member to store the length of the rectangle
+    double width; // Private member to store the width of the rectangle
+
+  public:
+    // Constructor to initialize the Rectangle object with length and width
+    Rectangle(double len, double wid): length(len), width(wid) {}
+
+    // Member function to calculate the area of the rectangle
+    double calculateArea() {
+      return length * width; // Formula to calculate the area of a rectangle
+    }
+
+    // Member function to calculate the perimeter of the rectangle
+    double calculatePerimeter() {
+      return 2 * (length + width); // Formula to calculate the perimeter of a rectangle
+    }
+};
+
+int main() {
+  double length, width;
+  std::cout << "Input the length of the rectangle: ";
+  std::cin >> length; // Input the length of the rectangle from the user
+  std::cout << "Input the width of the rectangle: ";
+  std::cin >> width; // Input the width of the rectangle from the user
+
+  // Create a rectangle object with the provided length and width
+  Rectangle rectangle(length, width);
+
+  // Calculate and display the area of the rectangle
+  double area = rectangle.calculateArea(); // Calculate the area using the Rectangle object
+  std::cout << "\nArea: " << area << std::endl; // Output the calculated area
+
+  // Calculate and display the perimeter of the rectangle
+  double perimeter = rectangle.calculatePerimeter(); // Calculate the perimeter using the Rectangle object
+  std::cout << "Perimeter: " << perimeter << std::endl; // Output the calculated perimeter
+
+  return 0; // Return 0 to indicate successful completion
+}
+
+
+6. Write a C++ program to create a class called Person that has private
+member variables for name, age and country. Implement member
+functions to set and get the values of these variables.
+
+#include <iostream> // Include necessary header for input/output stream
+#include <string> // Include necessary header for string operations
+
+class Person { // Define a class named Person
+  private: 
+    std::string name; // Private member to store the name of the person
+    int age; // Private member to store the age of the person
+    std::string country; // Private member to store the country of the person
+
+  public:
+    // Setter functions to set the private member variables
+    void setName(const std::string & n) { // Setter function for the name
+      name = n; // Assign the provided name to the 'name' member variable
+    }
+
+    void setAge(int a) { // Setter function for the age
+      age = a; // Assign the provided age to the 'age' member variable
+    }
+
+    void setCountry(const std::string & c) { // Setter function for the country
+      country = c; // Assign the provided country to the 'country' member variable
+    }
+
+    // Getter functions to retrieve the private member variables
+    std::string getName() { // Getter function for retrieving the name
+      return name; // Return the stored name
+    }
+
+    int getAge() { // Getter function for retrieving the age
+      return age; // Return the stored age
+    }
+
+    std::string getCountry() { // Getter function for retrieving the country
+      return country; // Return the stored country
+    }
+};
+
+int main() {
+  // Create a person object
+  Person person;
+
+  // Set the person's details using setter functions
+  person.setName("Saveli Sujatha"); // Set the person's name
+  person.setAge(25); // Set the person's age
+  person.setCountry("USA"); // Set the person's country
+
+  // Get and display the person's details using getter functions
+  std::cout << "Name: " << person.getName() << std::endl; // Output the person's name
+  std::cout << "Age: " << person.getAge() << std::endl; // Output the person's age
+  std::cout << "Country: " << person.getCountry() << std::endl; // Output the person's country
+
+  return 0; // Return 0 to indicate successful completion
+}
+
+Topics Covered
+Constructor
+Destructor
+Encapsulation
+Abstraction
+1. Write a program to find the multiplication values and the cubic values using
+inline function
+
+#include<iostream>
+using namespace std;
+float mul(float ,float);
+float cube_a(float);
+float cube_b(float);
+int main()
+{
+float a,b,mult=0,cube=0;
+cout<<"enter first number  : ";
+cin>>a;
+cout<<"enter second number : ";
+cin>>b;
+mult=mul(a,b);
+cout<<endl<<a<<" * "<<b<<" = "<<mult;
+cube=cube_a(a);
+cout<<endl<<a<<" * "<<a<<" * "<<a<<" = "<<cube;
+cube=cube_b(b);
+cout<<endl<<b<<" * "<<b<<" * "<<b<<" = "<<cube;
+return 0;
+}
+//multiplication funtion
+inline float mul(float a,float b )
+	{
+		return(a*b);
+	}
+//function-cube of a
+inline float cube_a(float a)
+	{
+		return(a*a*a);
+	}
+//funtion-cube of b	
+inline float cube_b(float b )
+	{	
+		return(b*b*b);
+	}
+
+2. Write a program of Addition, Subtraction, Division, Multiplication using
+constructor.
+
+#include <stdio.h>
+int main()
+{
+    int first, second, add, subtract, multiply;
+    float divide;
+    
+    printf("Enter two integers\n");
+    scanf("%d%d", &first, &second);
+    add        = first + second;
+    subtract = first - second;
+    multiply = first * second;
+    divide     = first / (float)second;   //typecasting
+    printf("Sum = %d\n",add);
+    printf("Difference = %d\n",subtract);
+    printf("Multiplication = %d\n",multiply);
+    printf("Division = %.2f\n",divide);
+    
+    return 0;
+}
+
+3. Write a C++ program to create a class called Car that has private
+member variables for company, model, and year. Implement member
+functions to get and set these variables
+
+#include <iostream> // Including the necessary header for input/output stream
+#include <string> // Including the necessary header for string operations
+
+class Car { // Defining a class named Car
+  private: 
+    std::string company; // Private member to store the company name of the car
+    std::string model; // Private member to store the model name of the car
+    int year; // Private member to store the year of the car
+
+  public:
+    // Constructor to initialize Car object with provided values
+    Car(const std::string & comp, const std::string & mdl, int yr): company(comp), model(mdl), year(yr) {}
+
+    // Getter functions to retrieve private member variables
+    std::string getCompany() { // Getter function for retrieving the company name
+      return company; // Return the stored company name
+    }
+
+    std::string getModel() { // Getter function for retrieving the model name
+      return model; // Return the stored model name
+    }
+
+    int getYear() { // Getter function for retrieving the year
+      return year; // Return the stored year
+    }
+
+    // Setter functions to modify private member variables
+    void setCompany(const std::string & comp) { // Setter function for modifying the company name
+      company = comp; // Assign the provided company name to the 'company' member variable
+    }
+
+    void setModel(const std::string & mdl) { // Setter function for modifying the model name
+      model = mdl; // Assign the provided model name to the 'model' member variable
+    }
+
+    void setYear(int yr) { // Setter function for modifying the year
+      year = yr; // Assign the provided year to the 'year' member variable
+    }
+};
+
+int main() {
+  // Create a car object with initial values
+  Car car("AUDI", "A6", 2023);
+
+  // Get and display the car details using getter functions
+  std::cout << "Company: " << car.getCompany() << std::endl; // Output the car's company name
+  std::cout << "Model: " << car.getModel() << std::endl; // Output the car's model name
+  std::cout << "Year: " << car.getYear() << std::endl; // Output the car's year
+
+  // Set new values for the car using setter functions
+  car.setCompany("BMW"); // Update the car's company name
+  car.setModel("M4"); // Update the car's model name
+  car.setYear(2022); // Update the car's year
+
+  // Get and display the updated car details using getter functions
+  std::cout << "\nUpdated Company: " << car.getCompany() << std::endl; // Output the updated car's company name
+  std::cout << "Updated Model: " << car.getModel() << std::endl; // Output the updated car's model name
+  std::cout << "Updated Year: " << car.getYear() << std::endl; // Output the updated car's year
+
+  return 0; // Return 0 to indicate successful completion
+}
+
+
+4. Write a C++ program to implement a class called Bank Account that has
+private member variables for account number and balance. Include
+member functions to deposit and withdraw money from the account.
+
+#include <iostream> // Include the necessary header for input/output stream
+#include <string> // Include the necessary header for string operations
+
+class BankAccount { // Define a class named BankAccount
+  private: 
+    std::string accountNumber; // Private member variable to store the account number
+    double balance; // Private member variable to store the balance
+
+  public:
+    // Constructor to initialize BankAccount object with provided values
+    BankAccount(const std::string & accNum, double initialBalance): accountNumber(accNum), balance(initialBalance) {}
+
+    // Member function to deposit money into the account
+    void deposit(double amount) {
+      balance += amount; // Add the deposited amount to the current balance
+      std::cout << "Deposit successful. Current balance: " << balance << std::endl; // Output success message and current balance
+    }
+
+    // Member function to withdraw money from the account
+    void withdraw(double amount) {
+      if (amount <= balance) { // Check if the withdrawal amount is less than or equal to the current balance
+        balance -= amount; // Deduct the withdrawn amount from the current balance
+        std::cout << "Withdrawal successful. Current balance: " << balance << std::endl; // Output success message and current balance
+      } else {
+        std::cout << "Insufficient balance. Cannot withdraw." << std::endl; // Output error message for insufficient balance
+      }
+    }
+};
+
+int main() {
+  // Create a bank account object
+  std::string sacno = "SB-123"; // Define the account number
+  double Opening_balance, deposit_amt, withdrawal_amt; // Define variables for opening balance, deposit amount, and withdrawal amount
+  Opening_balance = 1000; // Assign the opening balance
+  std::cout << "A/c. No." << sacno << " Balance: " << Opening_balance << std::endl; // Output the account details
+
+  BankAccount account(sacno, 1000.0); // Create a BankAccount object with initial account number and balance
+
+  // Deposit money into the account
+  deposit_amt = 1500; // Define the deposit amount
+  std::cout << "Deposit Amount: " << deposit_amt << std::endl; // Output the deposit amount
+  account.deposit(deposit_amt); // Call the deposit method of the account object
+
+  // Withdraw money from the account
+  withdrawal_amt = 750; // Define the withdrawal amount
+  std::cout << "Withdrawal Amount: " << withdrawal_amt << std::endl; // Output the withdrawal amount
+  account.withdraw(withdrawal_amt); // Call the withdraw method of the account object
+
+  // Attempt to withdraw more money than the balance
+  withdrawal_amt = 1800; // Define an amount higher than the balance for withdrawal
+  std::cout << "Attempt to withdrawal Amount: " << withdrawal_amt << std::endl; // Output the withdrawal amount
+  account.withdraw(withdrawal_amt); // Call the withdraw method of the account object
+
+  return 0; // Return 0 to indicate successful completion
+}
+
+5. Write a C++ program to create a class called Triangle that has private
+member variables for the lengths of its three sides. Implement member
+functions to determine if the triangle is equilateral, isosceles, or scalene.
+
+#include <iostream> // Include necessary header for input/output stream
+
+class Triangle { // Define a class named Triangle
+  private: 
+    double side1; // Private member variable to store side1 of the triangle
+    double side2; // Private member variable to store side2 of the triangle
+    double side3; // Private member variable to store side3 of the triangle
+
+  public:
+    // Constructor to initialize Triangle object with provided side lengths
+    Triangle(double s1, double s2, double s3): side1(s1), side2(s2), side3(s3) {}
+
+    // Member function to determine the type of the triangle
+    void determineType() {
+      if (side1 == side2 && side2 == side3) { // Check if all sides are equal
+        std::cout << "Equilateral Triangle" << std::endl; // Output if all sides are equal
+      } else if (side1 == side2 || side1 == side3 || side2 == side3) { // Check if at least two sides are equal
+        std::cout << "Isosceles Triangle" << std::endl; // Output if at least two sides are equal
+      } else {
+        std::cout << "Scalene Triangle" << std::endl; // Output if no sides are equal
+      }
+    }
+};
+
+int main() {
+  // Create a triangle object
+  double s1, s2, s3; // Define variables for side lengths
+  std::cout << "Input the lengths of the three sides of the triangle:\n"; // Prompt user to input side lengths
+  std::cout << "Side1: ";
+  std::cin >> s1; // Input for side1
+  std::cout << "Side2: ";
+  std::cin >> s2; // Input for side2
+  std::cout << "Side3: ";
+  std::cin >> s3; // Input for side3
+
+  Triangle triangle(s1, s2, s3); // Create Triangle object with provided side lengths
+
+  // Determine the type of triangle and output the result
+  triangle.determineType(); // Call determineType method to identify the triangle type
+
+  return 0; // Return 0 to indicate successful completion
+}
+
+6. Write a C++ program to implement a class called Employee that has
+private member variables for name, employee ID, and salary. Include
+member functions to calculate and set salary based on employee
+performance. Using of constructor
+
+#include <iostream> // Include necessary header for input/output stream
+#include <string> // Include necessary header for handling strings
+
+class Employee { // Define a class named Employee
+  private: 
+    std::string name; // Private member variable to store employee name
+    int employeeId; // Private member variable to store employee ID
+    double salary; // Private member variable to store employee salary
+
+  public:
+    // Constructor to initialize Employee object with provided details
+    Employee(const std::string & empName, int empId, double empSalary): name(empName), employeeId(empId), salary(empSalary) {}
+
+    // Member function to calculate salary based on performance rating
+    void calculateSalary(double performanceRating) {
+      if (performanceRating >= 0.0 && performanceRating <= 1.4) { // Check if performance rating is within valid range
+        salary *= performanceRating; // Calculate updated salary based on performance rating
+      } else {
+        std::cout << "Invalid performance rating. Salary remains unchanged." << std::endl; // Output for an invalid performance rating
+      }
+    }
+
+    // Member function to set salary
+    void setSalary(double empSalary) {
+      salary = empSalary; // Set employee salary
+    }
+
+    // Member function to get employee name
+    std::string getName() const {
+      return name; // Return employee name
+    }
+
+    // Member function to get employee ID
+    int getEmployeeId() const {
+      return employeeId; // Return employee ID
+    }
+
+    // Member function to get employee salary
+    double getSalary() const {
+      return salary; // Return employee salary
+    }
+};
+
+int main() {
+  // Create an employee object
+  std::string empName; // Define variable to store employee name
+  int empId; // Define variable to store employee ID
+  double empSalary; // Define variable to store employee salary
+
+  std::cout << "Input employee name: "; // Prompt user to input employee name
+  std::cin >> empName; // Input for employee name
+
+  std::cout << "Input employee ID: "; // Prompt user to input employee ID
+  std::cin >> empId; // Input for employee ID
+
+  std::cout << "Input employee salary: "; // Prompt user to input employee salary
+  std::cin >> empSalary; // Input for employee salary
+
+  Employee employee(empName, empId, empSalary); // Create Employee object with provided details
+
+  // Calculate and display initial salary
+  std::cout << "Initial salary: " << employee.getSalary() << std::endl; // Output initial salary
+
+  // Perform salary calculation based on performance rating
+  double performanceRating; // Define variable to store performance rating
+  std::cout << "Input performance rating (0.0-1.2): "; // Prompt user to input performance rating
+  std::cin >> performanceRating; // Input for performance rating
+
+  employee.calculateSalary(performanceRating); // Calculate updated salary based on performance
+
+  // Display updated salary
+  std::cout << "Updated salary: " << employee.getSalary() << std::endl; // Output updated salary
+
+  return 0; // Return 0 to indicate successful completion
+}
+
+
+7. Write a C++ program to implement a class called Date that has private
+member variables for day, month, and year. Include member functions to
+set and get these variables, as well as to validate if the date is valid.
+
+#include <iostream> // Include necessary header for input/output stream
+
+class Date { // Define a class named Date
+  private: 
+    int day; // Private member variable to store the day
+    int month; // Private member variable to store the month
+    int year; // Private member variable to store the year
+
+  public:
+    // Constructor to initialize Date object with provided day, month, and year
+    Date(int d, int m, int y): day(d), month(m), year(y) {}
+
+    // Member function to set the date
+    void setDate(int d, int m, int y) {
+      day = d; // Set day
+      month = m; // Set month
+      year = y; // Set year
+    }
+
+    // Member function to get the day
+    int getDay() const {
+      return day; // Return day
+    }
+
+    // Member function to get the month
+    int getMonth() const {
+      return month; // Return month
+    }
+
+    // Member function to get the year
+    int getYear() const {
+      return year; // Return year
+    }
+
+    // Member function to validate if the date is valid
+    bool isValidDate() const {
+      // Check if the month is valid
+      if (month < 1 || month > 12)
+        return false;
+
+      // Check if the day is valid
+      if (day < 1 || day > 31)
+        return false;
+
+      // Check for specific month-day combinations that are invalid
+      if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
+        return false;
+
+      if (month == 2) {
+        // Check for leap year
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+          if (day > 29)
+            return false;
+        } else {
+          if (day > 28)
+            return false;
+        }
+      }
+
+      // Date is valid
+      return true;
+    }
+};
+
+int main() {
+  // Create a date object
+  Date date(0, 0, 0); // Initialize Date object with default values
+
+  // Set the date
+  int day, month, year; // Define variables to store day, month, and year
+  std::cout << "Input day: "; // Prompt user to input day
+  std::cin >> day; // Input for day
+  std::cout << "Input month: "; // Prompt user to input month
+  std::cin >> month; // Input for month
+  std::cout << "Input year: "; // Prompt user to input year
+  std::cin >> year; // Input for year
+
+  date.setDate(day, month, year); // Set Date object with provided values
+
+  // Get and display the date
+  std::cout << "Date: " << date.getDay() << "/" << date.getMonth() << "/" << date.getYear() << std::endl; // Output date
+
+  // Validate the date
+  if (date.isValidDate())
+    std::cout << "The date is valid." << std::endl; // Output for a valid date
+  else
+    std::cout << "The date is invalid." << std::endl; // Output for an invalid date
+
+  return 0; // Return 0 to indicate successful completion
+}
+
+8. Write a C++ program to implement a class called Student that has private
+member variables for name, class, roll number, and marks. Include
+member functions to calculate the grade based on the marks and display
+the student's information. Accept address from each student implement
+using of aggregation
+
+#include <iostream> // Include necessary header for input/output stream
+#include <string> // Include necessary header for string handling
+
+class Student { // Define a class named Student
+  private: 
+    std::string name; // Private member variable to store student's name
+    std::string studentClass; // Private member variable to store student's class
+    int rollNumber; // Private member variable to store student's roll number
+    double marks; // Private member variable to store student's marks
+
+  public:
+    // Constructor to initialize Student object with provided details
+    Student(const std::string & studentName, const std::string & sClass, int rollNum, double studentMarks)
+        : name(studentName), studentClass(sClass), rollNumber(rollNum), marks(studentMarks) {}
+
+    // Member function to calculate the grade based on marks
+    std::string calculateGrade() {
+      if (marks >= 90) {
+        return "A+";
+      } else if (marks >= 80) {
+        return "A";
+      } else if (marks >= 70) {
+        return "B";
+      } else if (marks >= 60) {
+        return "C";
+      } else {
+        return "D";
+      }
+    }
+
+    // Member function to display student information
+    void displayInformation() {
+      std::cout << "\n\nName: " << name << std::endl; // Output student's name
+      std::cout << "Class: " << studentClass << std::endl; // Output student's class
+      std::cout << "Roll Number: " << rollNumber << std::endl; // Output student's roll number
+      std::cout << "Marks: " << marks << std::endl; // Output student's marks
+      std::cout << "Grade: " << calculateGrade() << std::endl; // Output student's grade
+    }
+};
+
+int main() {
+  // Create a student object
+  std::string studentName; // Variable to store student's name
+  std::string sClass; // Variable to store student's class
+  int rollNum; // Variable to store student's roll number
+  double studentMarks; // Variable to store student's marks
+
+  std::cout << "Student details: "; // Prompt user for student details
+  std::cout << "\nName: "; // Prompt user for student's name
+  std::getline(std::cin, studentName); // Input student's name
+
+  std::cout << "Class: "; // Prompt user for student's class
+  std::getline(std::cin, sClass); // Input student's class
+
+  std::cout << "Roll number: "; // Prompt user for student's roll number
+  std::cin >> rollNum; // Input student's roll number
+
+  std::cout << "Marks (0-100): "; // Prompt user for student's marks
+  std::cin >> studentMarks; // Input student's marks
+
+  Student student(studentName, sClass, rollNum, studentMarks); // Create Student object with provided details
+
+  // Display student information
+  student.displayInformation(); // Output student's information
+
+  return 0; // Return 0 to indicate successful completion
+}
+
+
+Topics Covered
+Inheritance
+Polymorphism
+
+1. Assume a class cricketer is declared. Declare a derived class batsman from
+cricketer. Data member of batsman. Total runs, Average runs and best
+performance. Member functions input data, calculate average runs, Display
+data. (Single Inheritance)
+
+// C++ program to calculate
+// the average of a batsman
+#include <bits/stdc++.h>
+using namespace std;
+
+// Function to find the average
+// of a batsman
+double averageRuns(int runs,
+				int matches,
+				int notout)
+{
+	// Calculate number of
+	// dismissals
+	int out = matches - notout;
+
+	// check for 0 times out
+	if (out == 0)
+		return -1;
+
+	// Calculate batting average
+	double avg = double(runs) / out;
+
+	return avg;
+}
+
+// Driver Program
+int main()
+{
+	int runs = 10000;
+	int matches = 250;
+	int notout = 50;
+
+	double avg
+		= averageRuns(
+			runs, matches, notout);
+
+	if (avg == -1)
+		cout << "NA";
+	else
+		cout << avg;
+
+	return 0;
+}
+
+2. Write a C++ Program to find Area of Rectangle using inheritance
+
+#include <iostream>
+
+//Base class
+class shape{
+   public:
+   void setwidth (int w){
+       width = w;
+   }
+   void setheight (int h){
+       height = h;
+   }
+protected:
+   int width;
+   int height;
+};
+
+//derived class
+class rectangle: public shape{
+    public:
+    int getarea () {
+        return (width*height);
+    }
+};
+
+int main(){
+    rectangle rect;
+    
+    rect. setwidth (5);
+    rect. setheight (7);
+    
+//print the area of the object
+    std::cout <<"total area: " <<rect.getarea() <<std::endl;
+    
+    return 0;
+}
+
+3. Create a class person having members name and age. Derive a class student
+having member percentage. Derive another class teacher having member
+salary. Write necessary member function to initialize, read and write data.
+Write also Main function (Multiple Inheritance)
+
+#include<iostream>
+using namespace std;
+class Person{
+	private:
+		string name;
+		int age;
+	public:
+		void setPerson(int a, string n){
+			name = n;
+			age = a;
+		}
+		void displayPerson(){
+			cout<<"Name:  "<<name<<endl;
+			cout<<"Age:    "<<age<<endl;
+		}
+		
+	
+};
+class Student: Person{
+	private:
+		float percentage;
+	public:
+		void setStudent(string n, int a, float p){
+			percentage = p;
+			setPerson(a,n);
+		}
+		void displayStudent(){
+			cout<<"Student details are: \n";
+			displayPerson();
+			cout<<"Prcentage is:  "<<percentage<<endl;
+		}
+};
+class  Teacher: Person{
+	private:
+		float salary;
+	public:
+		void setTeacher(string n, int a, float s){
+			salary = s;
+			setPerson(a,n);
+		}
+		void displayTeacher(){
+			cout<<"Teachers details are: \n";
+			displayPerson();
+			cout<<"Salary:  "<<salary<<endl;
+		}
+};
+
+
+int main(){
+	Student s;
+	s.setStudent("John", 12,80);
+	s.displayStudent();
+	Teacher t;
+	t.setTeacher("Abraham", 15, 9000.98);
+	t.displayTeacher();
+}
+
+4. Write a C++ Program display Student Mark sheet using Multiple inheritance
+
+#include<iostream>
+#include<stdio.h>
+
+using namespace std;
+class student
+{
+        int roll;
+        char name[25];
+        char add [25];
+        char city[25];
+        public:
+    student()
+        {
+                cout<<"  welcome in the student information system  "<<endl;
+        }
+        void getdata()
+        {
+                cout<<"\n enter the student roll no.  ";
+                cin>>roll;
+                cout<<"\n enter the student name  ";
+                cin>>name;
+                cout<<"\n enter ther student address  ";
+                cin>>add;
+                cout<<"\n enter the student city  ";
+                cin>>city;
+        }
+        void putdata()
+        {
+                cout<<"\n the student roll no: "<<roll;
+                cout<<"\n the student name: "<<name;
+                cout<<"\n the student coty: "<<city;
+        }
+};
+class marks: public student
+{
+        int sub1;
+        int sub2;
+        int sub3;
+        int per;
+        public:
+
+    void input()
+        {
+                getdata();
+                cout<<"\n enter the marks1: ";
+                cin>>sub1;
+                cout<<"\n enter the marks2: ";
+                cin>>sub2;
+                cout<<"\n enter the marks3: ";
+                cin>>sub3;
+        }
+        void output()
+        {
+                putdata();
+                cout<<"\n marks1: "<<sub1;
+                cout<<"\n marks2: "<<sub2;
+                cout<<"\n marks3: "<<sub3<<"\n";
+        }
+        void calculate ()
+        {
+                per= (sub1+sub2+sub3)/3;
+                cout<<"\n total percentage :: "<<per<<"\n";
+        }
+};
+
+int main()
+{
+        marks m1;
+        int ch;
+        int count=0;
+        do
+        {
+                cout<<"\n1.input data";
+                cout<<"\n2.output data";
+                cout<<"\n3.Calculate percentage";
+                cout<<"\n4.exit\n";
+                cout<<"\nEnter the choice :: ";
+                cin>>ch;
+                switch (ch)
+                {
+        case 1:
+                        m1.input();
+                        count++;
+                        break;
+
+        case 2:
+                        m1.output();
+                        break;
+
+        case 3:
+                        m1.calculate();
+                        break;
+                }
+        } while (ch!=4);
+}
+
+5. Assume that the test results of a batch of students are stored in three different
+classes. Class Students are storing the roll number. Class Test stores the
+marks obtained in two subjects and class result contains the total marks
+obtained in the test. The class result can inherit the details of the marks
+obtained in the test and roll number of students. (Multilevel Inheritance)
+
+#include <iostream>
+using namespace std;
+class Student{
+    protected:
+        char name[20];
+        int roll_number, age;
+    public:
+        Student(){}
+        void getDetails(){
+            cout<<"Input roll number: ";
+            cin>>roll_number;
+            cout<<"Input name: ";
+            cin.get();
+            cin.getline(name, 20);
+            cout<<"Input age: ";
+            cin>>age;
+        }
+        void putDetails(){
+            cout<<"Roll Number: "<<roll_number<<endl;
+            cout<<"Name: "<<name<<endl;
+            cout<<"Age: "<<age<<endl;
+        }
+};
+class Test: public Student{
+    protected:
+        int s1, s2, s3, s4, s5;
+    public:
+        Test(): Student(){}
+        void getmarks(){
+            cout<<"Input marks: \n";
+            cout<<"Subject 1: ";
+            cin>>s1;
+            cout<<"Subject 2: ";
+            cin>>s2;
+            cout<<"Subject 3: ";
+            cin>>s3;
+            cout<<"Subject 4: ";
+            cin>>s4;
+            cout<<"Subject 5: ";
+            cin>>s5;
+        }
+        void putmarks(){
+            cout<<"Subject 1: "<<s1<<endl;
+            cout<<"Subject 2: "<<s2<<endl;
+            cout<<"Subject 3: "<<s3<<endl;
+            cout<<"Subject 2: "<<s4<<endl;
+            cout<<"Subject 3: "<<s5<<endl;
+        }
+};
+class Sports: public Student{
+    protected:
+        int indoor, outdoor;
+    public:
+        Sports(): Student(){}
+        void getscore(){
+            cout<<"Input sports scores: \n";
+            cout<<"Indoor: ";
+            cin>>indoor;
+            cout<<"Outdoor: ";
+            cin>>outdoor;
+        }
+        void putscore(){
+            cout<<"Indoor: "<<indoor<<endl;
+            cout<<"Outdoor: "<<outdoor<<endl;
+        }
+};
+class Result: public Sports, public Test{
+    int total;
+    public:
+        Result(): Sports(), Test(){
+            Test::getDetails();
+            getmarks();
+            getscore();
+            total = indoor + outdoor + s1 + s2 + s3;
+        }
+        void display(){
+            cout<<endl;
+            Test::putDetails();
+            cout<<"Test Marks: \n"; Test::putmarks();
+            cout<<"Sports Scores: \n"; Sports::putscore();
+            cout<<"Total: "<<total<<endl;
+            cout<<"Percentage: "<<total / 7 <<" % "<<endl;
+        }
+};
+int main(){
+Result result;
+    result.display();
+    return 0;
+}
+
+6. Write a C++ Program to show access to Private Public and Protected using
+Inheritance
+
+// C++ program to demonstrate the working of public
+// inheritance
+#include <iostream>
+using namespace std;
+
+class Base {
+private:
+    int pvt = 1;
+
+protected:
+    int prot = 2;
+
+public:
+    int pub = 3;
+
+    // function to access private member
+    int getPVT() { return pvt; }
+};
+
+class PublicDerived : public Base {
+public:
+    // function to access protected member from Base
+    int getProt() { return prot; }
+};
+
+int main()
+{
+    PublicDerived object1;
+    cout << "Private = " << object1.getPVT() << endl;
+    cout << "Protected = " << object1.getProt() << endl;
+    cout << "Public = " << object1.pub << endl;
+    return 0;
+}
+
+7. Write a C++ Program to illustrates the use of Constructors in multilevel
+inheritance
+
+// C++ program to implement 
+// constructor in multilevel 
+// Inheritance 
+#include<iostream> 
+using namespace std; 
+
+// Base class 
+class A 
+{ 
+	public: 
+		A() 
+		{ 
+			cout << "Base class A constructor \n"; 
+		} 
+}; 
+
+// Derived class B 
+class B: public A 
+{ 
+	public: 
+		B() 
+		{ 
+			cout << "Class B constructor \n"; 
+		} 
+}; 
+
+// Derived class C 
+class C: public B 
+{ 
+	public: 
+		C() 
+		{ 
+			cout << "Class C constructor \n"; 
+			
+		} 
+}; 
+
+// Driver code 
+int main() 
+{ 
+	C obj; 
+	return 0; 
+}
+
+8. Write a program to Mathematic operation like Addition, Subtraction,
+Multiplication, Division Of two number using different parameters and
+Function Overloading
+
+#include<iostream>
+using namespace std;
+int main()
+{
+    int num1, num2, res;
+    cout<<"Enter Two Numbers: ";
+    cin>>num1>>num2;
+    res = num1+num2;
+    cout<<endl<<"Addition Result = "<<res<<endl;
+    res = num1-num2;
+    cout<<endl<<"Subtraction Result = "<<res<<endl;
+    res = num1*num2;
+    cout<<endl<<"Multiplication Result = "<<res<<endl;
+    res = num1/num2;
+    cout<<endl<<"Division Result = "<<res<<endl;
+    return 0;
+}
+
+9. Write a Program of Two 1D Matrix Addition using Operator Overloading
+
+#include <iostream>
+#include <vector>
+using namespace std;
+class Matrix {
+  public:
+    Matrix() {}
+    Matrix(const Matrix& x) : a(x.a) {}
+    Matrix(const vector<vector<int>>& v) : a(v) {}
+    Matrix operator+(const Matrix&);
+    vector<vector<int>> a;
+    void display(){
+        for(int i = 0; i<a.size(); i++){
+            for(int j = 0; j<a[i].size(); j++){
+                cout << a[i][j] << " ";
+            }    
+            cout << endl;
+        }
+    }
+};
+Matrix Matrix::operator+(const Matrix& m){
+    vector<vector<int>> vv = a;
+    for (int i=0; i<vv.size(); i++){
+        for (int j=0; j<vv[0].size(); j++){
+            vv[i][j] += m.a[i][j];
+        }
+    }
+    return Matrix(vv);
+}
+int main(){
+   vector<vector<int>> mat1 = {{5,8},{9,6},{7,9}};
+   vector<vector<int>> mat2 = {{8,3},{4,7},{6,3}};
+   int r = mat1.size();
+   int c = mat1[0].size();
+   Matrix m1(mat1), m2(mat2), res;
+   res = m1 + m2;
+   res.display();
+}
+
+10.Write a program to concatenate the two strings using Operator Overloading
+
+// C++ Program to concatenate two string
+// using unary operator overloading
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+// Class to implement operator overloading
+// function for concatenating the strings
+class AddString {
+
+public:
+	// Classes object of string
+	char s1[25], s2[25];
+
+	// Parameterized Constructor
+	AddString(char str1[], char str2[])
+	{
+		// Initialize the string to class object
+		strcpy(this->s1, str1);
+		strcpy(this->s2, str2);
+	}
+
+	// Overload Operator+ to concat the string
+	void operator+()
+	{
+		cout << "\nConcatenation: " << strcat(s1, s2);
+	}
+};
+
+// Driver Code
+int main()
+{
+	// Declaring two strings
+	char str1[] = "Geeks";
+	char str2[] = "ForGeeks";
+
+	// Declaring and initializing the class
+	// with above two strings
+	AddString a1(str1, str2);
+
+	// Call operator function
+	+a1;
+	return 0;
+}
+
+11. Write a program to calculate the area of circle, rectangle and triangle
+using Function Overloading
+Rectangle: Area *
+breadth Triangle: ½
+*Area* breadth Circle:
+Pi * Area *Area
+
+#include<iostream>
+using namespace std;
+int area(int);
+int area(int,int);
+float area(float);
+float area(float,float);
+int main()
+{
+        int s,l,b;
+        float r,bs,ht;
+        cout<<"Enter side of a square:";
+        cin>>s;
+        cout<<"Enter length and breadth of rectangle:";
+        cin>>l>>b;
+        cout<<"Enter radius of circle:";
+        cin>>r;
+        cout<<"Enter base and height of triangle:";
+        cin>>bs>>ht;
+        cout<<"Area of square is"<<area(s);
+        cout<<"\nArea of rectangle is "<<area(l,b);
+    cout<<"\nArea of circle is "<<area(r);
+    cout<<"\nArea of triangle is "<<area(bs,ht);
+}
+int area(int s)
+{
+    return(s*s);
+}
+int area(int l,int b)
+{
+    return(l*b);
+}
+float area(float r)
+{
+    return(3.14*r*r);
+}
+float area(float bs,float ht)
+{
+   return((bs*ht)/2);
+}
+
+12. Write a program to swap the two numbers using friend function
+without using third variable
+
+// C++ Program to swap two numbers using friend function
+#include <iostream>
+
+using namespace std;
+
+class Swap {
+
+	// Declare the variables of Swap Class
+	int temp, a, b;
+
+public:
+
+	// Define the parameterized constructor, for inputs
+	Swap(int a, int b)
+	{
+		this->a = a;
+		this->b = b;
+	}
+
+	// Declare the friend function to swap, take arguments 
+	// as call by reference
+	friend void swap(Swap&);
+};
+
+// Define the swap function outside class scope
+void swap(Swap& s1)
+{
+	// Call by reference is used to passed object copy to
+	// the function
+	cout << "\nBefore Swapping: " << s1.a << " " << s1.b;
+
+	// Swap operations with Swap Class variables
+	s1.temp = s1.a;
+	s1.a = s1.b;
+	s1.b = s1.temp;
+	cout << "\nAfter Swapping: " << s1.a << " " << s1.b;
+}
+
+// Driver Code
+int main()
+{
+	// Declare and Initialize the Swap object
+	Swap s(4, 6);
+	swap(s);
+	return 0;
+}
+
+13. Write a program to find the max number from given two numbers
+using friend function
+
+#include<iostream>
+using namespace std;
+ 
+class a;
+ 
+class b
+{
+    int number;
+    public:
+    b(int x)
+    {
+        number=x;
+    }
+    void friend greatest(a a1,b b1);
+};
+ 
+class a
+{
+    int number;
+    public:
+    a(int x)
+    {
+        number=x;
+    }
+    void friend greatest(a a1,b b1);
+};
+ 
+void greatest(a a1,b b1)
+{
+    if(a1.number>b1.number)
+    {
+        cout<<"\n Number in class A is greatest i.e. "<<a1.number;
+    }
+    else if(a1.number<b1.number)
+    {
+        cout<<"\n Number in class B is greatest i.e. "<<b1.number;
+    }
+else
+    {
+        cout<<"\n Number in both classes are equal";
+    }
+}
+ 
+int main()
+{
+    cout<<"\n\n Program to find greatest of two numbers in two different classes using friend function";
+    cout<<"\n ^^^^^^^ ^^ ^^^^ ^^^^^^^^ ^^ ^^^ ^^^^^^^ ^^ ^^^ ^^^^^^^^^ ^^^^^^^ ^^^^^ ^^^^^^ ^^^^^^^^";
+    int num;
+cout<<"\n\n Enter number for class A - ";
+    cin>>num;
+    a a1(num);
+ 
+    cout<<"\n Enter number for class B - ";
+    cin>>num;
+    b b1(num);
+ 
+    greatest(a1,b1);
+    cout<<"\n";
+ 
+    return 0;
+
+ Topics Covered
+Templates
+
+1. Write a program of to swap the two values using template
+
+// C++ program to implement 
+// function templates 
+#include <iostream> 
+using namespace std; 
+
+// Function template to swap 
+// two numbers 
+template <class T> 
+int swap_numbers(T& x, T& y) 
+{ 
+	T t; 
+	t = x; 
+	x = y; 
+	y = t; 
+	return 0; 
+} 
+
+// Driver code 
+int main() 
+{ 
+	int a, b; 
+	a = 10, b = 20; 
+
+	// Invoking the swap() 
+	swap_numbers(a, b); 
+	cout << a << " " << b << endl; 
+	return 0; 
+}
+
+2. Write a program of to sort the array using templates
+
+#include<iostream>
+using namespace std;
+#define N 10
+
+template <class T>
+void sort(T arr[], int SIZE){
+	for (int i = 0; i < SIZE; i++)
+	{
+		for (int j = i+1; j < SIZE; j++)
+		{
+			if (arr[i] > arr[j])
+			{
+				T temp;
+				temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+	}
+}
+
+
+int main(){
+	int int_array[N];
+	float float_array[N];
+	cout<<"Entner integer array elements:"<<endl;
+	for (int i = 0; i < N; i++)
+	{
+		cin>>int_array[i];
+	}
+	cout<<"Entner floating array elements:"<<endl;
+	for (int i = 0; i < N; i++)
+	{
+		cin>>float_array[i];
+	}
+	sort(int_array,N);
+	sort(float_array, N);
+	cout<<"After sorting they are :"<<endl;
+	for (int i = 0; i < N; i++)
+	{
+		cout<<int_array[i]<<", ";
+	}
+	cout<<endl;
+	for (int i = 0; i < N; i++)
+	{
+		cout<<float_array[i]<<", ";
+	}
+	return 0;
+}
+ 
